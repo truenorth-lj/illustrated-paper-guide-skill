@@ -1,8 +1,8 @@
 # Illustrated Paper Guide Skills
 
-[![License: MIT-0](https://img.shields.io/badge/License-MIT--0-green)](LICENSE)
 [![skills.sh](https://img.shields.io/badge/skills.sh-install-blue)](https://www.skills.sh/truenorth-lj/illustrated-paper-guide-skill/illustrated-paper-guide)
 [![ClawHub](https://img.shields.io/badge/ClawHub-install-purple)](https://clawhub.ai/illustrated-paper-guide/skills/illustrated-paper-guide)
+[![License: MIT-0](https://img.shields.io/badge/License-MIT--0-green)](LICENSE)
 
 A small, portable skill suite for turning academic papers into illustrated,
 checkpoint-based study guides.
@@ -37,7 +37,7 @@ cp -R skills/illustrated-paper-guide ~/.agents/skills/
 cp -R skills/teaching-diagram-maker ~/.agents/skills/
 ```
 
-The skills are also available separately through ClawHub:
+For OpenClaw, the skills are also available separately through ClawHub:
 
 ```bash
 clawhub install illustrated-paper-guide
