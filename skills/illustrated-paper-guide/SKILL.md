@@ -1,7 +1,7 @@
 ---
 name: illustrated-paper-guide
 description: |
-  Create or improve a source-grounded study guide for an academic paper or PDF. Use when the user wants a big-picture explanation, phased reading checkpoints, figure or panel walkthroughs, abbreviation expansion, limitations, explanatory diagrams, or follow-up answers written back into durable notes. Trigger phrases include "read this paper", "paper study guide", "explain this figure", "turn this PDF into notes", and "make a reading checklist".
+  Create or improve a source-grounded study guide for an academic paper or PDF. Use for new-paper intake, competing top-down reading plans, big-picture explanations, phased reading checkpoints, figure or panel walkthroughs, coverage audits, limitations, explanatory diagrams, or follow-up answers written back into durable notes. Trigger phrases include "read this paper", "paper study guide", "compare reading plans", "explain this figure", "turn this PDF into notes", and "make a reading checklist".
 license: MIT-0
 metadata:
   companion-skill: teaching-diagram-maker
@@ -37,6 +37,13 @@ creating the diagram.
   from open questions. Never invent citations, measurements, or mechanisms.
 - Start with the whole-paper view. Details should deepen the overview, not
   reveal the main conclusion for the first time.
+- Optimize time to first useful understanding. Give the reader a correct,
+  low-resolution mental model early; increase resolution in later passes.
+- Speed comes from reordering, not silent omission. Inventory the source once,
+  and give every inventoried coverage unit an explicit read-now, read-later,
+  or out-of-scope disposition.
+- Settle and review the shallow-to-deep reading route before generating its
+  checklist. The checklist records the final route; it does not design it.
 - When the user asks a conceptual follow-up, answer in chat and write the
   reusable explanation into the relevant body section unless they opt out.
 - Do not collect every follow-up in a detached FAQ. Put it beside the concept,
@@ -47,13 +54,29 @@ creating the diagram.
 ### New guide
 
 1. Locate and inspect the paper, existing notes, and repository instructions.
-2. Establish bibliographic facts and the paper's central claim from the source.
-3. Read `references/paper-guide-template.md` and build the guide plus checklist.
-4. Read `references/figure-reading-rubric.md` before extracting or explaining
-   figures.
-5. Add teaching diagrams where structure, comparison, timing, space, or causal
-   sequence is hard to understand.
-6. Validate links, checkpoints, claims, figures, and limitations.
+2. Establish the canonical version, paper type, reader goal, available time,
+   bibliographic facts, and central claim from the source. Use reasonable
+   defaults instead of blocking on optional preferences.
+3. Inventory sections, figures, tables, central equations, appendices or
+   supplements, major claims, assumptions, and limitations. This source
+   inventory is shared by all route proposals.
+4. Read `references/reading-path-competition.md`. Choose the reader budget,
+   generate genuinely different candidate routes, compare them with the fixed
+   rubric, and synthesize one progressive route. Route agents propose only;
+   the main agent is the single writer.
+5. Read `references/paper-guide-template.md` and draft the guide from the
+   merged route, from fast orientation to full coverage.
+6. Read `references/figure-reading-rubric.md` before extracting or explaining
+   figures. Add teaching diagrams where structure, comparison, timing, space,
+   or causal sequence is hard to understand.
+7. Have a non-author reader audit the source, inventory, coverage ledger,
+   merged route, and draft guide whenever multiple readers were used. Resolve
+   blocking findings and freeze the guide headings.
+8. Generate the checklist in the same
+   top-down order. Keep source coverage in `COVERAGE.md` or a compact coverage
+   table; do not turn the learner checklist into a copy of the source TOC.
+9. Mechanically validate checklist links and completion criteria, then validate
+   claims, figures, limitations, and coverage.
 
 ### Improve an existing guide
 
@@ -72,6 +95,38 @@ creating the diagram.
 4. Keep historical FAQ sections as appendices; migrate useful content into the
    main narrative when touching that topic.
 
+Follow-up questions, one-figure explanations, and focused edits stay
+single-reader. Do not restart route competition for an already established
+guide unless the user's goal or the paper interpretation has materially
+changed.
+
+## Reader Budget and Review Gate
+
+For a new full guide, use parallel readers only when they improve the route:
+
+- **Zero subagents:** focused follow-up, single figure, or local guide repair.
+- **One subagent:** short, linear paper with a clear contribution; the main
+  agent creates the mechanical inventory while the subagent enriches the
+  claim-to-evidence mapping.
+- **Two subagents by default:** one argument-first route and one
+  learner/evidence-first route. The main agent compares and merges them.
+- **Two route subagents plus a dedicated reviewer:** long review or book
+  chapter, dense theory or mathematics, many major visuals or supplements,
+  cross-domain prerequisites, or an explicit exhaustive request. Use three
+  route proposals only when the user explicitly asks for three-way comparison.
+
+Page count is only a hint. Escalate when two or more complexity signals occur:
+more than ten major figures or tables, necessary supplementary evidence,
+interdependent theory and experiments, substantial cross-domain background,
+multiple plausible central claims, or equation-by-equation reading needs.
+
+For the default two-route workflow, reuse one reader after synthesis for the
+independent source audit when a dedicated reviewer is not warranted. Candidate
+routes may disagree about order, but not vote on facts;
+the source and coverage audit decide factual and evidentiary questions. If the
+host has no subagent support, run separate argument-first and evidence-first
+self-passes and disclose that they were not independent.
+
 ## Required Deliverables
 
 For a full paper guide, prefer this folder shape:
@@ -79,6 +134,7 @@ For a full paper guide, prefer this folder shape:
 ```text
 README.md          # Main illustrated study guide
 CHECKLIST.md       # Linked, testable reading checkpoints
+COVERAGE.md        # Source inventory and audit ledger for a full new guide
 images/            # User-created diagrams and permitted local crops
 scripts/           # Reproducible extraction or generation scripts
 paper.pdf          # Optional local input; never required in a public output
@@ -95,6 +151,12 @@ The guide should include:
    takeaways, and questions worth asking.
 6. A glossary for recurring abbreviations.
 7. Reproduction notes for generated or cropped images.
+8. A progressive reading route with explicit outputs, stop points, and
+   deferred material.
+
+For a full new guide, use `COVERAGE.md`. For a short, linear paper, a compact
+coverage table in `README.md` is sufficient. The ledger serves the guide author
+and reviewer; the checklist serves the learner.
 
 For a short answer or targeted edit, create only the artifacts that support the
 requested scope. Do not force a full guide onto a small task.
@@ -149,6 +211,41 @@ Every long guide needs a companion `CHECKLIST.md`. Each checkpoint must:
 - state a falsifiable completion criterion, such as explaining a mechanism or
   identifying the evidence for a claim without looking.
 
+Put the settled top-down reading sequence at the top, followed by detailed
+checkpoints and durable reading records. Generate it only after the guide
+review stabilizes headings. When reorganizing an existing checklist, preserve
+checked items as history; never uncheck them or treat an old check as proof
+that materially revised content has been revalidated.
+
+## Coverage Ledger
+
+The coverage ledger prevents speed from becoming accidental omission. Record:
+
+- source locator and kind: claim, section, figure, table, equation, method,
+  assumption, limitation, appendix, or supplement;
+- importance and evidence type;
+- guide anchor and reading pass;
+- disposition: read now, return in L1-L4, or out of scope with a reason;
+- guide state: inventoried, mapped, explained, or tested;
+- review state: pending, pass, or blocker, plus unresolved uncertainty.
+
+Keep the inventory proportional: track top-level sections, claim-bearing
+subsections, decisive figures or tables, central equations, and appendices or
+supplements that materially affect the conclusion. Split panels only when they
+support distinct claims; group procedural or reference-only material.
+
+Operational completeness means all central abstract or conclusion claims map
+to evidence; every core figure or table is explained or explicitly deferred;
+all top-level sections and materially relevant supplements have a disposition;
+and assumptions or limitations that change the claim's scope are present. It
+does not mean rewriting every sentence of the paper.
+
+Ship only when central claims are mapped to evidence; decisive figures and
+tables are explained now or assigned a later level; scope-changing assumptions
+and limitations appear in the guide; every core or in-scope row has review
+passing; deferred and out-of-scope dispositions have review passing; no review
+rows remain pending or blocked; and every out-of-scope item has a reason.
+
 Use explicit anchors because generated heading slugs vary across renderers:
 
 ```html
@@ -190,6 +287,14 @@ Before finishing:
 - Confirm the guide links to `CHECKLIST.md` when the guide is long.
 - Confirm checklist link labels exactly match target headings and every anchor
   exists.
+- Confirm the checklist follows the reviewed reading route and was generated
+  after headings stabilized.
+- Confirm every source-inventory item has a disposition, and every deferred
+  item has a reason and a later return point.
+- Confirm each central claim maps to evidence and that methods, controls,
+  negative results, assumptions, and limitations were not silently dropped.
+- Confirm the independent reviewer resolved all blocking source-grounding,
+  coverage, and causal-overstatement findings.
 - Confirm referenced images exist and reproduction scripts still run.
 - Render and inspect changed diagrams through `teaching-diagram-maker`.
 - Scan for raw `\[` or `\(` math delimiters when the target renderer does not

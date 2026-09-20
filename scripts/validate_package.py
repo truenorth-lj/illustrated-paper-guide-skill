@@ -60,6 +60,14 @@ def parse_frontmatter(path: Path, errors: list[str]) -> dict[str, str]:
 def validate_skill(name: str, companion: str | None, errors: list[str]) -> None:
     skill_dir = ROOT / "skills" / name
     required = ["SKILL.md", "meta.json", "agents/openai.yaml"]
+    if name == "illustrated-paper-guide":
+        required.extend(
+            [
+                "references/figure-reading-rubric.md",
+                "references/paper-guide-template.md",
+                "references/reading-path-competition.md",
+            ]
+        )
     for relative in required:
         if not (skill_dir / relative).is_file():
             fail(errors, f"skills/{name}/{relative}: required file is missing")

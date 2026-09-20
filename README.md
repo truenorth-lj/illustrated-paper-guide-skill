@@ -11,7 +11,7 @@ The repository contains two related but independently useful skills:
 
 | Skill | Responsibility |
 | --- | --- |
-| `illustrated-paper-guide` | Builds or improves a durable paper-reading guide, including a big-picture overview, reading checkpoints, source-grounded figure explanations, limitations, and Q&A write-back. |
+| `illustrated-paper-guide` | Compares top-down reading paths, reviews source coverage, and builds or improves a durable paper-reading guide with checkpoints, figure explanations, limitations, and Q&A write-back. |
 | `teaching-diagram-maker` | Creates and visually verifies editable teaching diagrams for mechanisms, comparisons, timelines, pathways, and causal chains. |
 
 `illustrated-paper-guide` uses `teaching-diagram-maker` whenever a custom
@@ -56,6 +56,7 @@ Verified registry pages:
 Example requests for `illustrated-paper-guide`:
 
 - “Turn this PDF into a study guide I can finish in checkpoints.”
+- “Compare several reading plans and give me the fastest route that still covers every major claim.”
 - “Explain every panel in Figure 3 and show how it supports the claim.”
 - “Add a big-picture section and a linked reading checklist to these notes.”
 - “Write my follow-up explanation back into the relevant section.”
@@ -68,12 +69,23 @@ Example requests for `teaching-diagram-maker`:
 
 ## Method
 
-The suite follows four principles:
+The suite follows six principles:
 
 1. Give the reader the problem, method, and conclusion before details.
-2. Separate source evidence, interpretation, and open questions.
-3. Explain figures from visible evidence instead of jumping to conclusions.
-4. Preserve new understanding in the note, not only in chat history.
+2. Compare genuinely different candidate reading routes for a new full guide,
+   then synthesize and review one shallow-to-deep route.
+3. Optimize early understanding by reordering rather than silently omitting
+   source material.
+4. Separate source evidence, interpretation, and open questions.
+5. Explain figures from visible evidence instead of jumping to conclusions.
+6. Preserve new understanding in the note, not only in chat history.
+
+Route competition is adaptive: focused follow-ups stay single-reader; a
+typical new guide uses two route readers; complex reviews or dense theory add a
+dedicated source reviewer. A third route is reserved for explicit three-way
+comparison requests. The guide headings stabilize before the learner checklist
+is generated, while a separate coverage ledger lets a source reviewer detect
+omissions without making the checklist unwieldy.
 
 The paper skill creates the learning structure. The diagram skill owns diagram
 craft and visual verification. This boundary keeps both skills focused while
@@ -92,7 +104,8 @@ skills/
 │   ├── agents/openai.yaml
 │   └── references/
 │       ├── figure-reading-rubric.md
-│       └── paper-guide-template.md
+│       ├── paper-guide-template.md
+│       └── reading-path-competition.md
 └── teaching-diagram-maker/
     ├── SKILL.md
     ├── meta.json
