@@ -76,6 +76,23 @@ material for each pass.]
 | DOI or canonical URL | |
 
 [Continue with A-F sections appropriate to the paper.]
+
+<a id="ckpt-e1"></a>
+## E1 Figure [N]: [question answered by the complete figure]
+
+![Figure N: concise accessible description](./images/figure-n-short-name.png)
+
+> **Source:** [Authors, paper title, Figure N, exact version](canonical-url),
+> [license or permission basis]. [Complete figure / cropped from PDF page N /
+> adapted; describe modifications if any.]
+
+1. **Read first:** [panel, axis, comparison, or visible region].
+2. **Visible evidence:** [what is actually shown].
+3. **Narrow conclusion:** [what this figure supports].
+4. **Do not infer:** [tempting claim not established by the figure].
+
+[If embedding is unavailable, replace the image with a direct source link and
+state the legal or technical reason.]
 ```
 
 ## CHECKLIST.md

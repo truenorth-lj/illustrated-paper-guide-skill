@@ -48,6 +48,10 @@ creating the diagram.
   reusable explanation into the relevant body section unless they opt out.
 - Do not collect every follow-up in a detached FAQ. Put it beside the concept,
   result, or figure it clarifies.
+- When reuse rights and repository policy allow it, embed a readable local copy
+  of each core paper figure beside its explanation. Do not make the learner
+  switch to the PDF merely to see evidence the guide is actively discussing.
+  Keep the canonical paper link for attribution and surrounding context.
 
 ## Choose the Workflow
 
@@ -188,7 +192,9 @@ Read `references/figure-reading-rubric.md` before working with paper figures.
 
 Core sequence for a permitted multi-panel figure:
 
-1. Show or reference the complete figure first.
+1. Embed the complete figure first. Use a source link alone only when reuse
+   rights are unclear, the source cannot be extracted readably, or repository
+   policy forbids local copies; record the reason.
 2. State the question answered by the figure as a whole.
 3. Split or discuss individual panels.
 4. Explain the visible evidence before stating the conclusion.
@@ -196,6 +202,11 @@ Core sequence for a permitted multi-panel figure:
 
 Explain axes, units, colors, legends, marks, controls, uncertainty, and the
 exact region that supports the claim. Point out likely novice misreadings.
+Every embedded source figure needs a nearby attribution naming the paper,
+figure number, canonical source, license or permission basis, and whether the
+image is a full copy or crop. Preserve panel letters, axes, units, legends,
+scale bars, and other claim-bearing context. Inspect the rendered image at the
+size a learner will actually read, not only the source PNG at full resolution.
 
 Custom explanatory diagrams complement paper figures; they do not silently
 replace source evidence. Invoke `teaching-diagram-maker` for their creation and
@@ -273,8 +284,10 @@ Use explicit anchors because generated heading slugs vary across renderers:
   explicit permission allows redistribution.
 - A citation or DOI does not grant redistribution rights.
 - In private notes, local figure crops may be used as permitted by the user's
-  context. In public outputs, prefer source links, figure references, and
-  original teaching diagrams unless reuse rights are clear.
+  context. In public outputs, embed source figures when reuse rights are clear
+  and attribution requirements are met. Otherwise use source links, figure
+  references, or original teaching diagrams and record why embedding was not
+  permitted.
 - Never expose local absolute paths, credentials, private contacts, or source
   repository names in a distributable guide.
 
@@ -295,7 +308,12 @@ Before finishing:
   negative results, assumptions, and limitations were not silently dropped.
 - Confirm the independent reviewer resolved all blocking source-grounding,
   coverage, and causal-overstatement findings.
-- Confirm referenced images exist and reproduction scripts still run.
+- Confirm every core figure is embedded when legally and technically
+  permitted, or has a documented link-only reason.
+- Confirm referenced images exist, match the cited paper version and figure,
+  render at a readable size, retain claim-bearing labels and legends, include
+  nearby attribution and reuse basis, and have reproduction scripts that still
+  run.
 - Render and inspect changed diagrams through `teaching-diagram-maker`.
 - Scan for raw `\[` or `\(` math delimiters when the target renderer does not
   support them.

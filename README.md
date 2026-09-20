@@ -69,7 +69,7 @@ Example requests for `teaching-diagram-maker`:
 
 ## Method
 
-The suite follows six principles:
+The suite follows seven principles:
 
 1. Give the reader the problem, method, and conclusion before details.
 2. Compare genuinely different candidate reading routes for a new full guide,
@@ -78,7 +78,9 @@ The suite follows six principles:
    source material.
 4. Separate source evidence, interpretation, and open questions.
 5. Explain figures from visible evidence instead of jumping to conclusions.
-6. Preserve new understanding in the note, not only in chat history.
+6. Embed readable core figures beside their explanations when reuse rights
+   allow it, so the guide does not require avoidable PDF context switching.
+7. Preserve new understanding in the note, not only in chat history.
 
 Route competition is adaptive: focused follow-ups stay single-reader; a
 typical new guide uses two route readers; complex reviews or dense theory add a

@@ -134,8 +134,18 @@ looks for:
 - supplements or appendices that materially change the conclusion;
 - contradictions between the guide and source;
 - deferred content with no return pass.
+- core figures that are link-only even though reuse rights and repository
+  policy allow a readable local embed;
+- missing or incorrect figure files, figure/version mismatches, unreadable
+  rendered text, cropped-out panel letters, axes, units, legends, scale bars,
+  or claim-bearing annotations;
+- missing nearby attribution, canonical source, license or permission basis,
+  or crop/adaptation disclosure.
 
 Source-grounding, coverage, and causal-overstatement findings are blocking.
+Figure availability, identity, readability, completeness, and attribution
+findings are also blocking for core figures. A documented link-only fallback
+is acceptable when embedding is not legally or technically permitted.
 Wording or layout suggestions are non-blocking unless they change meaning.
 Resolve blockers and stabilize guide headings before generating the checklist.
 After checklist generation, the main agent performs a final mechanical check
